@@ -1,0 +1,77 @@
+// Styling for the masthead
+// Styling for the masthead with background animation
+header.masthead {
+  text-align: center;
+  color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  animation: changeBackground 30s infinite; // Tambahkan animasi
+
+  .intro-text {
+    padding-top: 150px;
+    padding-bottom: 100px;
+    .intro-lead-in {
+      font-size: 16px;
+      font-style: italic;
+      line-height: 10px;
+      margin-bottom: 15px;
+      @include serif-font;
+    }
+    .intro-heading {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 30px;
+      margin-bottom: 15px;
+      @include heading-font;
+    }
+  }
+  a.btn {
+    padding: 10px 20px; /* Mengurangi padding */
+    font-size: 14px; /* Ukuran font lebih kecil */
+  }
+}
+
+// Keyframes untuk mengganti background
+@keyframes changeBackground {
+  0% {
+    background-image: url('../img/header/header-bg.jpg');
+  }
+  33% {
+    background-image: url('../img/header/header-bg2.png');
+  }
+  66% {
+    background-image: url('../img//header/header-bg3.jpg');
+  }
+  100% {
+    background-image: url('../img//header/header-bg4.jpg');
+  }
+}
+@media(min-width:768px) {
+  header.masthead {
+    a.btn {
+      // Gaya default (untuk layar besar)
+      padding: 20px 40px;
+      font-size: 18px;
+
+    }
+    .intro-text {
+      padding-top: 300px;
+      padding-bottom: 200px;
+      .intro-lead-in {
+        font-size: 40px;
+        font-style: italic;
+        line-height: 40px;
+        margin-bottom: 25px;
+        @include serif-font;
+      }
+      .intro-heading {
+        font-size: 75px;
+        font-weight: 700;
+        line-height: 75px;
+        margin-bottom: 50px;
+        @include heading-font;
+      }
+    }
+  }
+}
