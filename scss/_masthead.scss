@@ -1,12 +1,11 @@
-// Styling for the masthead
-// Styling for the masthead with background animation
+/* CSS sebelumnya */
 header.masthead {
   text-align: center;
   color: white;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  animation: changeBackground 30s infinite; // Tambahkan animasi
+  animation: none; /* Animasi background sebelumnya dinonaktifkan */
 
   .intro-text {
     padding-top: 150px;
@@ -27,33 +26,60 @@ header.masthead {
     }
   }
   a.btn {
-    padding: 10px 20px; /* Mengurangi padding */
-    font-size: 14px; /* Ukuran font lebih kecil */
+    padding: 10px 20px;
+    font-size: 14px;
   }
+}
+/* Tambahan untuk slide background */
+header.masthead {
+  position: relative;
+  height: 100vh; /* Full height viewport */
+  overflow: hidden;
 }
 
-// Keyframes untuk mengganti background
-@keyframes changeBackground {
-  0% {
-    background-image: url('../img/header/bg1.jpeg');
-  }
-  33% {
-    background-image: url('../img/header/header-bg2.png');
-  }
-  66% {
-    background-image: url('../img//header/header-bg3.jpg');
-  }
-  100% {
-    background-image: url('../img//header/header-bg4.jpg');
-  }
+header.masthead .background-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 75%;
+  background-size: cover;
+  background-position: center center;
+  transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+  z-index: 0; /* Berada di belakang konten */
 }
-@media(min-width:768px) {
+
+header.masthead .background-slide.hidden {
+  opacity: 0;
+  transform: translateX(-100%); /* Slide ke kiri */
+}
+
+header.masthead .background-slide.active {
+  opacity: 1;
+  transform: translateX(0); /* Posisi normal */
+}
+
+header.masthead .intro-text {
+  position: relative;
+  z-index: 2; /* Supaya konten di atas background */
+}
+
+@media (min-width: 768px) {
+  header.masthead .background-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    z-index: 0; /* Berada di belakang konten */
+  }
   header.masthead {
     a.btn {
-      // Gaya default (untuk layar besar)
       padding: 20px 40px;
       font-size: 18px;
-
     }
     .intro-text {
       padding-top: 300px;
@@ -75,3 +101,4 @@ header.masthead {
     }
   }
 }
+
